@@ -34,7 +34,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         String path = request.getRequestURI();
 
-        // Allow unauthenticated endpoints to pass through
         if (path.startsWith("/api/auth/")) {
             filterChain.doFilter(request, response);
             return;
@@ -51,7 +50,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         String token = header.substring(7); // Remove "Bearer " prefix
 
-        // Validate basic structure of JWT: header.payload.signature
         if (token.split("\\.").length != 3) {
             log.warn("Malformed JWT token");
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
