@@ -9,7 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 @RequiredArgsConstructor
-
+@AllArgsConstructor
 
 public class UserDto {
 
@@ -22,5 +22,8 @@ public class UserDto {
 
     @ValidPassword
     private String password;
+
+    @NotBlank(message = "Role is required")
+    private String role;
 
 }
