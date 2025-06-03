@@ -48,7 +48,7 @@ public class UserControllerTest {
     public void testGetAllUsers() {
         when(userService.getAllUsers()).thenReturn(List.of(sampleUser));
 
-        ResponseEntity<List<User>> response = userController.getAllUers();
+        ResponseEntity<List<User>> response = userController.getAllUsers();
 
         assertEquals(200, response.getStatusCodeValue());
         assertEquals(1, response.getBody().size());
